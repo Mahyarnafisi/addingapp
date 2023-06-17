@@ -1,0 +1,4 @@
+.App {
+  display: grid;
+  grid-template-columns: 20vw repeat(8, minmax(5rem, 1fr)) 20vw;
+}
