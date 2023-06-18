@@ -12,7 +12,7 @@ function AddUser() {
   /*Submit function*/
   const addUserHandler = (e) => {
     e.preventDefault();
-    console.log("submitted");
+    console.log(enteredAge, enteredUsername);
   };
 
   /*updating username input state */
