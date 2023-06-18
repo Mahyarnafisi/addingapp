@@ -14,4 +14,9 @@
   border: 2px double lightgray;
   list-style: none;
   border: 2px solid;
+  font-weight: 600;
+}
+
+.users-list__item:nth-child(odd) {
+  border: 3px solid slateblue;
 }
