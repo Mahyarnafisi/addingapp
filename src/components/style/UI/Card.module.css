@@ -1,0 +1,9 @@
+.card {
+  grid-column: 2/10;
+  height: min-content;
+  background-color: #ffffff;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 2rem;
+}
