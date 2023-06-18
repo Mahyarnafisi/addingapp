@@ -12,7 +12,14 @@ function AddUser() {
   /*Submit function*/
   const addUserHandler = (e) => {
     e.preventDefault();
-    console.log(enteredAge, enteredUsername);
+
+    /*validation and resting inputs   */
+    if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0 || +enteredAge < 0) {
+      return;
+    }
+
+    setEnteredUsername(""); //reset the input
+    setEnteredAge(""); //reset the input
   };
 
   /*updating username input state */
@@ -30,11 +37,11 @@ function AddUser() {
         <label className={styles["add-user__label"]} htmlFor="username">
           Username
         </label>
-        <input onChange={usernameChangeHandler} className={styles["add-user__input"]} id="username" type="text" placeholder="enter your name" />
+        <input onChange={usernameChangeHandler} value={enteredUsername} className={styles["add-user__input"]} id="username" type="text" placeholder="Enter your name" />
         <label className={styles["add-user__label"]} htmlFor="username">
           Your Age
         </label>
-        <input onChange={ageChangeHandler} className={`${styles["add-user__input"]} `} id="username" type="number" placeholder="enter your age" />
+        <input onChange={ageChangeHandler} value={enteredAge} className={`${styles["add-user__input"]} `} id="username" type="number" placeholder="Enter your age" />
         <Button type="submit" className={styles["add-user__btn-submit"]}>
           <BsPlusCircle />
         </Button>

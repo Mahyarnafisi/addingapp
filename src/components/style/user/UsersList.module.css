@@ -1,0 +1,16 @@
+.users-list {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 2rem;
+}
+
+.users-list:not(:last-child) {
+  gap: 0;
+}
+.users-list__item {
+  padding: 2rem;
+  box-shadow: 0.4rem 0.4rem 0 lightgray;
+  font-size: 1.8rem;
+  border: 2px double lightgray;
+  list-style: none;
+}
