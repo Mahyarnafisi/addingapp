@@ -6,4 +6,5 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 2rem;
+  border-radius: 1rem;
 }
