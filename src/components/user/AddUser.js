@@ -4,7 +4,7 @@ import Card from "../UI/Card";
 import Button from "../UI/Button";
 import { BsPlusCircle } from "react-icons/bs";
 
-function AddUser() {
+function AddUser(props) {
   /*state variables */
   const [enteredUsername, setEnteredUsername] = useState("");
   const [enteredAge, setEnteredAge] = useState("");
@@ -18,6 +18,9 @@ function AddUser() {
       return;
     }
 
+    /*lifting data to app js */
+    props.onAddUsers(enteredUsername, enteredAge);
+
     setEnteredUsername(""); //reset the input
     setEnteredAge(""); //reset the input
   };
@@ -30,6 +33,8 @@ function AddUser() {
   const ageChangeHandler = (event) => {
     setEnteredAge(event.target.value);
   };
+
+  /*lifting up the users */
 
   return (
     <Card>
