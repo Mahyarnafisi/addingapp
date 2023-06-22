@@ -1,7 +1,14 @@
 .users-list {
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column;
   gap: 2rem;
+  max-height: 35rem;
+  overflow-y: scroll;
+  background-color: whitesmoke;
+}
+
+.users-list::-webkit-scrollbar {
+  display: none;
 }
 
 .users-list:not(:last-child) {
@@ -15,9 +22,10 @@
   list-style: none;
   border: 2px solid;
   font-weight: 600;
+  background-color: white;
 }
 
 .users-list__item:nth-child(odd) {
   border: 3px solid lightslategrey;
-  box-shadow: 0.4rem 0.4rem 0 lightsteelblue;
+  box-shadow: 0.4rem 0.4rem 0 lightgray;
 }

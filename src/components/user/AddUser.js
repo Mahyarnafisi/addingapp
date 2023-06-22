@@ -21,6 +21,8 @@ function AddUser(props) {
   const submitFormHandler = (e) => {
     e.preventDefault();
     props.onAddUsers(enteredUsername, enteredAge);
+    setEnteredUSername("");
+    setEnteredAge("");
   };
 
   return (
