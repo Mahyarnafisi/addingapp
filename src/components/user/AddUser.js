@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "../style/user/AddUser.module.css";
 import Card from "../UI/Card";
 import Button from "../UI/Button";
+import ErrorModal from "../UI/ErrorModal";
 import { BsPlusCircle } from "react-icons/bs";
 
 function AddUser(props) {
@@ -20,27 +21,40 @@ function AddUser(props) {
   /**submit form handler */
   const submitFormHandler = (e) => {
     e.preventDefault();
+
+    /**Condition and Validation */
+    if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
+      return;
+    }
+
+    if (enteredAge < 1) {
+      return;
+    }
+
     props.onAddUsers(enteredUsername, enteredAge);
     setEnteredUSername("");
     setEnteredAge("");
   };
 
   return (
-    <Card>
-      <form onSubmit={submitFormHandler} className={styles["add-user"]}>
-        <label className={styles["add-user__label"]} htmlFor="username">
-          Username
-        </label>
-        <input onChange={usernameInputValue} value={enteredUsername} className={styles["add-user__input"]} id="username" type="text" placeholder="Enter your name" />
-        <label className={styles["add-user__label"]} htmlFor="username">
-          Your Age
-        </label>
-        <input onChange={ageInputValue} value={enteredAge} className={`${styles["add-user__input"]} `} id="username" type="number" placeholder="Enter your age" />
-        <Button type="submit" className={styles["add-user__btn-submit"]}>
-          <BsPlusCircle />
-        </Button>
-      </form>
-    </Card>
+    <>
+      {/* <ErrorModal /> */}
+      <Card>
+        <form onSubmit={submitFormHandler} className={styles["add-user"]}>
+          <label className={styles["add-user__label"]} htmlFor="username">
+            Username
+          </label>
+          <input onChange={usernameInputValue} value={enteredUsername} className={styles["add-user__input"]} id="username" type="text" placeholder="Enter your name" />
+          <label className={styles["add-user__label"]} htmlFor="username">
+            Your Age
+          </label>
+          <input onChange={ageInputValue} value={enteredAge} className={`${styles["add-user__input"]} `} id="username" type="number" placeholder="Enter your age" />
+          <Button type="submit" className={styles["add-user__btn-submit"]}>
+            <BsPlusCircle />
+          </Button>
+        </form>
+      </Card>
+    </>
   );
 }
 
