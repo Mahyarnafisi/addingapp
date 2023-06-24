@@ -3,6 +3,6 @@
   grid-template-columns: 20vw repeat(8, minmax(5rem, 1fr)) 20vw;
   grid-row: repeat(3, 1fr);
   align-items: start;
-  align-content: center;
+  align-content: start;
   height: 100vh;
 }

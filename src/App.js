@@ -11,12 +11,12 @@ function App(props) {
   const finalID = useRef();
 
   const addUserToList = (username, age) => {
+    /*ID Maker fucntion */
     const idMaker = () => {
       const number = refNum.current++;
       const alpha = String.fromCharCode(Math.random() * 100);
       finalID.current = number + alpha + number;
     };
-
     idMaker();
 
     setUserList((prevData) => {
