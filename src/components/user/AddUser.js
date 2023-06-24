@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useKeypress from "react-use-keypress";
 import styles from "../style/user/AddUser.module.css";
 import Card from "../UI/Card";
 import Button from "../UI/Button";
@@ -9,6 +10,15 @@ function AddUser(props) {
   /*state variables */
   const [enteredUsername, setEnteredUSername] = useState("");
   const [enteredAge, setEnteredAge] = useState("");
+  const [error, setError] = useState();
+
+  /**
+   * close error modal with ESC keypress
+   */
+  useKeypress("Escape", () => {
+    closeModalHandler();
+  });
+
   /*event handler */
   const usernameInputValue = (e) => {
     setEnteredUSername(e.target.value);
@@ -24,10 +34,18 @@ function AddUser(props) {
 
     /**Condition and Validation */
     if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
+      setError({
+        type: "error of input",
+        message: "Please enter your name and age",
+      });
       return;
     }
 
     if (enteredAge < 1) {
+      setError({
+        type: "error of age",
+        message: "Please enter a valid age",
+      });
       return;
     }
 
@@ -36,9 +54,14 @@ function AddUser(props) {
     setEnteredAge("");
   };
 
+  /**clear error value */
+  const closeModalHandler = () => {
+    error && setError("");
+  };
+
   return (
     <>
-      {/* <ErrorModal /> */}
+      {error && <ErrorModal errorType={error.type} errorMessage={error.message} closeModal={closeModalHandler} />}
       <Card>
         <form onSubmit={submitFormHandler} className={styles["add-user"]}>
           <label className={styles["add-user__label"]} htmlFor="username">
