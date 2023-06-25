@@ -1,5 +1,4 @@
-import React from "react";
-import Button from "../UI/Button";
+import React, { Fragment } from "react";
 import styles from "../style/UI/ErrorModal.module.css";
 
 function ErrorModal(props) {
@@ -8,7 +7,7 @@ function ErrorModal(props) {
   };
 
   return (
-    <>
+    <Fragment>
       <div className={styles.backdrop} onClick={props.closeModal}></div>
       <div className={styles["error-modal"]}>
         <div className={styles.error}>
@@ -19,7 +18,7 @@ function ErrorModal(props) {
           </button>
         </div>
       </div>
-    </>
+    </Fragment>
   );
 }
 export default ErrorModal;

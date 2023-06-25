@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import useKeypress from "react-use-keypress";
 import styles from "../style/user/AddUser.module.css";
 import Card from "../UI/Card";
 import Button from "../UI/Button";
 import ErrorModal from "../UI/ErrorModal";
+import Wrapper from "../helper/Wrapper";
 import { BsPlusCircle } from "react-icons/bs";
 
 function AddUser(props) {
@@ -57,10 +58,12 @@ function AddUser(props) {
   /**clear error value */
   const closeModalHandler = () => {
     error && setError("");
+    setEnteredUSername("");
+    setEnteredAge("");
   };
 
   return (
-    <>
+    <Fragment>
       {error && <ErrorModal errorType={error.type} errorMessage={error.message} closeModal={closeModalHandler} />}
       <Card>
         <form onSubmit={submitFormHandler} className={styles["add-user"]}>
@@ -77,7 +80,7 @@ function AddUser(props) {
           </Button>
         </form>
       </Card>
-    </>
+    </Fragment>
   );
 }
 
